@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch, Redirect } from 'react-router-dom';
+
+import LatestPosts from './components/LatestPosts';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<React.Fragment>
+			<Switch>
+				<Route path="/latest" render={(props) => <LatestPosts />} />
+				<Redirect exact from="/" to="/latest" />
+			</Switch>
+		</React.Fragment>
+	);
 }
 
-export default App;
+export default () => {
+	return (
+		<App />
+	);
+};
